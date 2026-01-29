@@ -23,7 +23,7 @@ interface F1DashboardProps {
 export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
   const [selectedChannels, setSelectedChannels] = useState<string[]>([]);
   const [currentDataIndex, setCurrentDataIndex] = useState(0);
-  const [isLive, setIsLive] = useState(true);
+  const [isLive, setIsLive] = useState(false);
   const [selectedDriver, setSelectedDriver] = useState<F1Driver>(F1_DRIVERS[2]); // Lewis Hamilton by default
   const [selectedTrack, setSelectedTrack] = useState<F1Track>(F1_TRACKS[0]); // Silverstone by default
   const [manualSpeed, setManualSpeed] = useState<number | null>(null);
@@ -168,9 +168,6 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
   };
 
   const sectorData = calculateSectorData().filter((sector): sector is NonNullable<typeof sector> => sector !== null);
-  useEffect(() => {
-    resetToLiveData();
-  }, []);
   
   return (
     <div className="min-h-screen bg-black">

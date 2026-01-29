@@ -168,7 +168,10 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
   };
 
   const sectorData = calculateSectorData().filter((sector): sector is NonNullable<typeof sector> => sector !== null);
-
+  useEffect(() => {
+    resetToLiveData();
+  }, []);
+  
   return (
     <div className="min-h-screen bg-black">
       {/* Header */}

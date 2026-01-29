@@ -56,7 +56,7 @@ export default function F1Dashboard({ telemetryData }: F1DashboardProps) {
       const maxIndex = Object.keys(telemetryData.full_data.time || {}).length - 1;
       const interval = setInterval(() => {
         setCurrentDataIndex(prev => (prev + 1) % maxIndex);
-      }, 100); // Update every 100ms for smooth animation
+      }, 1000); // Update every 100ms for smooth animation
       
       return () => clearInterval(interval);
     }
